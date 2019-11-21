@@ -6,6 +6,9 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
+import com.merobookstore.bookstore.adapter.ViewPagerAdapter;
+import com.merobookstore.bookstore.fragments.LoginFragment;
+import com.merobookstore.bookstore.fragments.RegisterFragment;
 
 public class ViewPagerActivity extends AppCompatActivity {
 
@@ -21,6 +24,11 @@ public class ViewPagerActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabId);
         viewPager = findViewById(R.id.viewpager);
 
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(new LoginFragment(),"Login");
+        viewPagerAdapter.addFragment(new RegisterFragment(), "Sign Up");
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
     }
 }
